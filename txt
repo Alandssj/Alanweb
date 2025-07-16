@@ -1,0 +1,14 @@
+<!--Formulario-->
+    <div>
+        <form action="https://formsubmit.co/c091ea55d3edb2100006d2b6c5d47a80" method="POST">
+            <label for="Nombre">Nombre</label>
+            <input type="text" name="name" required>
+
+            <label for="Email">Correo Electrónico</label>
+            <input type="email" name="email" required>
+
+            <label for="comments">Comentarios</label>
+            <textarea name="comments" cols="15" rows="5"></textarea>
+
+            <button type="submit">Send</button>
+</form>

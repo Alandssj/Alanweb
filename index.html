@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Diseño web | Explora destinos</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="nav__logo">
+          <img src="assets/logo.png" alt="logo" />
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="index.html">Inicio</a></li>
+          <li class="link"><a href="destino.html">Destinos</a></li>
+          <li class="link"><a href="prueba.html">Contáctanos</a></li>
+          <li class="link"><a href="#">Blog</a></li>
+        </ul>
+
+        <!-- 🔽 Buscador con sugerencias -->
+        <div class="search" style="position: relative;">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar ubicación..."
+            autocomplete="off"
+          />
+          <span id="searchBtn" style="cursor:pointer;"><i class="ri-search-line"></i></span>
+
+          <!-- 🔍 Sugerencias -->
+          <div
+            id="suggestions"
+            style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; display: none; z-index: 1000;"
+          ></div>
+        </div>
+
+        <div class="login">
+          <span><i class="ri-user-3-fill"></i></span>
+        </div>
+      </nav>
+
+      <div class="destination__container">
+        <div class="socials">
+          <span><a href="https://twitter.com" target="_blank"><i class="ri-twitter-fill"></i></a></span>
+          <span><a href="https://facebook.com" target="_blank"><i class="ri-facebook-fill"></i></a></span>
+          <span><a href="https://instagram.com" target="_blank"><i class="ri-instagram-line"></i></a></span>
+          <span><a href="https://youtube.com" target="_blank"><i class="ri-youtube-fill"></i></a></span>
+        </div>
+
+        <div class="content">
+          <h1>
+            EXPLORA<br />
+            EL DESTINO<br /><span>DE TUS SUEÑOS</span>
+          </h1>
+          <p>
+            Fomenta la exploración de territorios desconocidos, abrazando
+            diversas culturas y paisajes, mientras se persigue el destino
+            deseado que cautiva el corazón y enciende un sentido de asombro.
+          </p>
+          <button class="btn" onclick="window.location.href='alquiler.html'">RESERVE AHORA</button>
+        </div>
+
+        <div class="destination__grid">
+          <div class="destination__card">
+            <img src="assets/chatgpt1.png" alt="Propiedad" />
+            <div class="card__content">
+              <h4>$85.000 ARS</h4>
+              <p>Avenida Rivadavia 6000, Caballito</p>
+              <ul><li>2 ambientes · 1 baño · 53 m²</li></ul>
+              <p>Moderno departamento con cocina equipada, cochera y balcón. Excelente ubicación en zona residencial.</p>
+            </div>
+          </div>
+
+          <div class="destination__card">
+            <img src="assets/chatgpt2.png" alt="Propiedad" />
+            <div class="card__content">
+              <h4>$140.000 ARS</h4>
+              <p>Neuquén 300, Villa Luro</p>
+              <ul><li>4 ambientes · 3 baños · 260 m²</li></ul>
+              <p>Amplia casa con jardín, quincho, cochera doble y excelentes terminaciones. Ideal para familias.</p>
+            </div>
+          </div>
+
+          <div class="destination__card">
+            <img src="assets/chatgpt3.png" alt="Propiedad" />
+            <div class="card__content">
+              <h4>$120.000 ARS</h4>
+              <p>San Juan 1200, San Telmo</p>
+              <ul><li>3 ambientes · 2 baños · 95 m²</li></ul>
+              <p>Departamento moderno con excelente vista, luminoso, con balcón y amenities premium. Muy bien ubicado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔽 Script de sugerencias -->
+    <script>
+      const propiedades = [
+        "Avenida Rivadavia 6000, Caballito",
+        "Neuquén 300, Villa Luro",
+        "San Juan 1200, San Telmo",
+        "Av. Belgrano 2500, Congreso",
+        "Av. La Plata 1200, Boedo",
+        "Calle Las Heras 900, San Isidro",
+        "Moreno 4500, Almagro",
+        "Olazábal 1600, Villa Urquiza"
+      ];
+
+      const searchInput = document.getElementById("searchInput");
+      const suggestions = document.getElementById("suggestions");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function showSuggestions(value) {
+        suggestions.innerHTML = "";
+        if (!value) {
+          suggestions.style.display = "none";
+          return;
+        }
+
+        const filtered = propiedades.filter((prop) =>
+          prop.toLowerCase().includes(value.toLowerCase())
+        );
+
+        if (filtered.length === 0) {
+          suggestions.style.display = "none";
+          return;
+        }
+
+        filtered.forEach((prop) => {
+          const div = document.createElement("div");
+          div.textContent = prop;
+          div.style.padding = "8px";
+          div.style.cursor = "pointer";
+          div.addEventListener("mousedown", () => {
+            searchInput.value = prop;
+            suggestions.style.display = "none";
+            searchInput.focus();
+          });
+          div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = "#f0f0f0";
+          });
+          div.addEventListener("mouseout", () => {
+            div.style.backgroundColor = "white";
+          });
+          suggestions.appendChild(div);
+        });
+
+        suggestions.style.display = "block";
+      }
+
+      searchInput.addEventListener("input", (e) => {
+        showSuggestions(e.target.value);
+      });
+
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `alquiler.html?busqueda=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      searchBtn.addEventListener("click", () => {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = `alquiler.html?busqueda=${encodeURIComponent(query)}`;
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!searchInput.contains(e.target) && !suggestions.contains(e.target)) {
+          suggestions.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

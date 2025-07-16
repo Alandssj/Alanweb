@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Contáctanos</title>
+    <style>
+      .lugar-turistico {
+        margin-top: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .lugar-turistico img {
+        width: 350px;
+        height: auto;
+        border-radius: 1rem;
+        object-fit: cover;
+      }
+
+      .lugar-info h2 {
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      .lugar-info p {
+        color: var(--text-dark);
+        line-height: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .lugar-info .btn-reserva {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .lugar-info .btn-reserva:hover {
+        background-color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .lugar-turistico {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .lugar-turistico img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ✅ NAVBAR -->
+      <nav>
+        <div class="nav__logo">
+          <img src="assets/logo.png" alt="logo" />
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="index.html">Inicio</a></li>
+          <li class="link"><a href="destino.html">Destinos</a></li>
+          <li class="link"><a href="prueba.html">Contáctanos</a></li>
+          <li class="link"><a href="#">Blog</a></li>
+        </ul>
+
+        <div class="search" style="position: relative;">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar ubicación..."
+            autocomplete="off"
+          />
+          <span id="searchBtn" style="cursor:pointer;"><i class="ri-search-line"></i></span>
+          <div
+            id="suggestions"
+            style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ccc; max-height: 200px; overflow-y: auto; display: none; z-index: 1000;"
+          ></div>
+        </div>
+
+        <div class="login">
+          <span><i class="ri-user-3-fill"></i></span>
+        </div>
+      </nav>
+
+      <!-- 🏔️ SECCIÓN TURÍSTICA: BARILOCHE -->
+      <section class="lugar-turistico">
+        <img src="assets/bariloche.png" alt="San Carlos de Bariloche" />
+        <div class="lugar-info">
+          <h2>San Carlos de Bariloche</h2>
+          <p>
+            Bariloche es un destino soñado para los amantes de la naturaleza. Se pueden realizar caminatas por el Cerro Catedral, paseos en kayak por lagos cristalinos y disfrutar de su reconocida gastronomía.
+          </p>
+          <a href="alquiler.html?lugar=Bariloche" class="btn-reserva">Reservar en Bariloche</a>
+        </div>
+      </section>
+
+      <!-- 🌊 SECCIÓN TURÍSTICA: CATARATAS DEL IGUAZÚ -->
+      <section class="lugar-turistico">
+        <img src="assets/iguazu.png" alt="Cataratas del Iguazú" />
+        <div class="lugar-info">
+          <h2>Cataratas del Iguazú</h2>
+          <p>
+            Ubicadas en la frontera entre Argentina y Brasil, las Cataratas del Iguazú son una maravilla natural. Podés hacer recorridos en lancha, caminar por pasarelas y vivir la experiencia del Parque Nacional.
+          </p>
+          <a href="alquiler.html?lugar=Iguazú" class="btn-reserva">Reservar en Iguazú</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- 🔽 Script de sugerencias -->
+    <script>
+      const propiedades = [
+        "Avenida Rivadavia 6000, Caballito",
+        "Neuquén 300, Villa Luro",
+        "San Juan 1200, San Telmo",
+        "Av. Belgrano 2500, Congreso",
+        "Av. La Plata 1200, Boedo",
+        "Calle Las Heras 900, San Isidro",
+        "Moreno 4500, Almagro",
+        "Olazábal 1600, Villa Urquiza"
+      ];
+
+      const searchInput = document.getElementById("searchInput");
+      const suggestions = document.getElementById("suggestions");
+      const searchBtn = document.getElementById("searchBtn");
+
+      function showSuggestions(value) {
+        suggestions.innerHTML = "";
+        if (!value) {
+          suggestions.style.display = "none";
+          return;
+        }
+
+        const filtered = propiedades.filter((prop) =>
+          prop.toLowerCase().includes(value.toLowerCase())
+        );
+
+        if (filtered.length === 0) {
+          suggestions.style.display = "none";
+          return;
+        }
+
+        filtered.forEach((prop) => {
+          const div = document.createElement("div");
+          div.textContent = prop;
+          div.style.padding = "8px";
+          div.style.cursor = "pointer";
+          div.addEventListener("mousedown", () => {
+            searchInput.value = prop;
+            suggestions.style.display = "none";
+            searchInput.focus();
+          });
+          div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = "#f0f0f0";
+          });
+          div.addEventListener("mouseout", () => {
+            div.style.backgroundColor = "white";
+          });
+          suggestions.appendChild(div);
+        });
+
+        suggestions.style.display = "block";
+      }
+
+      searchInput.addEventListener("input", (e) => {
+        showSuggestions(e.target.value);
+      });
+
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `alquiler.html?busqueda=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      searchBtn.addEventListener("click", () => {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = `alquiler.html?busqueda=${encodeURIComponent(query)}`;
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!searchInput.contains(e.target) && !suggestions.contains(e.target)) {
+          suggestions.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

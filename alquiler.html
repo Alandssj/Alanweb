@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propiedades en Alquiler</title>
+    <link rel="stylesheet" href="alquiler.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navbar -->
+      <nav>
+        <div class="nav__logo">
+          <img src="assets/logo.png" alt="Logo" />
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="index.html">Inicio</a></li>
+          <li class="link"><a href="destino.html">Destinos</a></li>
+          <li class="link"><a href="prueba.html">Contáctanos</a></li>
+          <li class="link"><a href="#">Blog</a></li>
+        </ul>
+        <div class="search">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar ubicación..."
+            autocomplete="off"
+          />
+          <span><i class="ri-search-line"></i></span>
+        </div>
+        <div class="login">
+          <span><i class="ri-user-3-fill"></i></span>
+        </div>
+      </nav>
+
+      <!-- Filtros -->
+      <section class="filters">
+        <select id="tipoPropiedad">
+          <option value="">Tipo de propiedad</option>
+          <option value="departamento">Departamento</option>
+          <option value="casa">Casa</option>
+        </select>
+        <select id="ambientes">
+          <option value="">Ambientes</option>
+          <option value="1">1 ambiente</option>
+          <option value="2">2 ambientes</option>
+          <option value="3">3 ambientes o más</option>
+        </select>
+        <select id="precio">
+          <option value="">Precio</option>
+          <option value="-50000">Menos de $50.000</option>
+          <option value="50000-100000">$50.000 - $150.000</option>
+          <option value="150000">Más de $150.000</option>
+        </select>
+        <select id="lugar">
+          <option value="">Lugar</option>
+          <option value="Bariloche">Bariloche</option>
+          <option value="Iguazú">Iguazú</option>
+        </select>
+        <button id="aplicarFiltros">Aplicar filtros</button>
+      </section>
+
+      <!-- Propiedades -->
+      <section class="destination__grid" id="propiedades">
+        <div class="destination__card" data-lugar="Bariloche">
+          <img src="assets/chatgpt1.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$85.000 ARS</h4>
+            <p>Avenida Rivadavia 6000, Caballito</p>
+            <ul><li>2 ambientes · 1 baño · 53 m²</li></ul>
+            <p>Moderno departamento con cocina equipada, cochera y balcón.</p>
+            <p><strong>Lugar:</strong> Bariloche</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Iguazú">
+          <img src="assets/chatgpt2.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$140.000 ARS</h4>
+            <p>Neuquén 300, Villa Luro</p>
+            <ul><li>4 ambientes · 3 baños · 260 m²</li></ul>
+            <p>Amplia casa con jardín, quincho, cochera doble.</p>
+            <p><strong>Lugar:</strong> Iguazú</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Bariloche">
+          <img src="assets/chatgpt5.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$70.000 ARS</h4>
+            <p>Av. Belgrano 2500, Congreso</p>
+            <ul><li>1 ambiente · 1 baño · 30 m²</li></ul>
+            <p>Departamento con vista a la nieve y montañas.</p>
+            <p><strong>Lugar:</strong> Bariloche</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Iguazú">
+          <img src="assets/chatgpt7.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$90.000 ARS</h4>
+            <p>Av. La Plata 1200, Boedo</p>
+            <ul><li>2 ambientes · 1 baño · 65 m²</li></ul>
+            <p>Departamento con balcón al frente y lavadero.</p>
+            <p><strong>Lugar:</strong> Iguazú</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Bariloche">
+          <img src="assets/chatgpt4.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$180.000 ARS</h4>
+            <p>Calle Las Heras 900, San Isidro</p>
+            <ul><li>5 ambientes · 4 baños · 310 m²</li></ul>
+            <p>Chalet con pileta, jardín y parrilla.</p>
+            <p><strong>Lugar:</strong> Bariloche</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Iguazú">
+          <img src="assets/chatgpt6.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$100.000 ARS</h4>
+            <p>Moreno 4500, Almagro</p>
+            <ul><li>3 ambientes · 2 baños · 75 m²</li></ul>
+            <p>Departamento moderno con amenities.</p>
+            <p><strong>Lugar:</strong> Iguazú</p>
+          </div>
+        </div>
+
+        <div class="destination__card" data-lugar="Bariloche">
+          <img src="assets/chatgpt3.png" alt="Propiedad" />
+          <div class="card__content">
+            <h4>$120.000 ARS</h4>
+            <p>Olazábal 1600, Villa Urquiza</p>
+            <ul><li>3 ambientes · 2 baños · 95 m²</li></ul>
+            <p>Duplex a estrenar con terraza propia.</p>
+            <p><strong>Lugar:</strong> Bariloche</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const searchInput = document.getElementById("searchInput");
+
+      searchInput.addEventListener("input", function () {
+        const value = searchInput.value.toLowerCase();
+        document.querySelectorAll(".destination__card").forEach((prop) => {
+          const text = prop.innerText.toLowerCase();
+          prop.style.display = text.includes(value) ? "block" : "none";
+        });
+      });
+
+      document.getElementById("aplicarFiltros").addEventListener("click", function () {
+        const tipo = document.getElementById("tipoPropiedad").value;
+        const ambientes = document.getElementById("ambientes").value;
+        const precio = document.getElementById("precio").value;
+        const lugar = document.getElementById("lugar").value;
+
+        document.querySelectorAll(".destination__card").forEach((prop) => {
+          const texto = prop.innerText.toLowerCase();
+          const lugarData = prop.getAttribute("data-lugar");
+          let visible = true;
+
+          if (tipo && !texto.includes(tipo)) visible = false;
+          if (ambientes && !texto.includes(ambientes)) visible = false;
+          if (precio) {
+            const match = texto.match(/\$(\d+[.,]?\d*)/);
+            if (match) {
+              const valor = parseInt(match[1].replaceAll(".", ""));
+              if (precio === "-50000" && valor >= 50000) visible = false;
+              else if (precio === "50000-100000" && (valor < 50000 || valor > 100000)) visible = false;
+              else if (precio === "150000" && valor <= 150000) visible = false;
+            }
+          }
+          if (lugar && lugarData !== lugar) visible = false;
+
+          prop.style.display = visible ? "block" : "none";
+        });
+      });
+
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const busqueda = getQueryParam("busqueda");
+        if (busqueda) {
+          searchInput.value = busqueda;
+          const value = busqueda.toLowerCase();
+          document.querySelectorAll(".destination__card").forEach((prop) => {
+            const text = prop.innerText.toLowerCase();
+            prop.style.display = text.includes(value) ? "block" : "none";
+          });
+        }
+
+        const lugarParam = getQueryParam("lugar");
+        if (lugarParam) {
+          const lugarSelect = document.getElementById("lugar");
+          if (lugarSelect) {
+            lugarSelect.value = lugarParam;
+            document.getElementById("aplicarFiltros").click();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
